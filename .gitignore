@@ -117,3 +117,4 @@ fabric.properties
 .history/
 
 db/db-data/*
+!db/db-data/.gitkeep
