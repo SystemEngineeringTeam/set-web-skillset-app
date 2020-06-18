@@ -10,7 +10,7 @@ services:
       - ./docker/vue:/app
     working_dir: /app
     tty: true
-    #command: sh -c "yarn install && yarn serve"
+    command: sh -c "yarn install && yarn serve"
 
   go:
     container_name: skill-set-go
@@ -23,13 +23,13 @@ services:
     ports:
       - 8082:8082
     volumes:
-      - ./docker/go:/go/src
-    working_dir: /go/src/app
+      - ./docker/go:/go
+    working_dir: /go
     environment:
       - "GOPATH=/go"
     tty: true
     #command: fresh
-    #command: bash -c "cd app && realize start --server"
+    command: sh -c "go run main.go"
 
   mysql:
     image: mysql:5.7
