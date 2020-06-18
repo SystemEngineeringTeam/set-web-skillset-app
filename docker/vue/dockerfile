@@ -1,9 +1,0 @@
-FROM node:8.16-alpine
-
-RUN apk update && \
-    npm install -g npm && \
-    npm install -g @vue/cli &&\
-    npm install -g vue-router --save &&\
-    npm install -g @mdi/js file-loader material-design-icons-iconfont --save-dev &&\
-    npm install -g vuex --save &&\
-    vue add vuetify
