@@ -24,7 +24,7 @@
       </v-card-text>
 
       <v-divider></v-divider>
-
+  
       <v-card-text class="white--text">
         {{ new Date().getFullYear() }} — <strong>システム工学研究会</strong>
       </v-card-text>
@@ -37,10 +37,9 @@ export default {
 
   data: () => ({
     icons: [
-        'mdi-facebook',
         'mdi-twitter',
+        'mdi-github',
         'mdi-linkedin',
-        'mdi-instagram',
       ],
   }),
 };

@@ -1,29 +1,16 @@
 
 <template>
     <v-layout wrap> <!-- wrap属性をつけるのがポイント -->
-        <v-col class="d-flex" cols="12" xs='2' sm="2" md='2'>
-        <v-select
-          :items="filterlist"
-          label="選択"
-          solo
-        ></v-select>
-        </v-col>
-        <v-col class="d-flex" cols="12" xs='2' sm="2" md='2'>
-        <v-select
-          :items="filterlistdetails.grade"
-          label="選択"
-          solo
-        ></v-select>
-        </v-col>
         <v-flex class="d-flex" xs='12' sm='6' md='4'>
-            <v-row>
-                <div v-for="user in users" :key="user.id">
+            <v-row >
+                <div v-for="user in $store.state.users" :key="user.id">
                     <v-col cols="12">
                         <v-hover
                         v-slot:default="{ hover }"
                         open-delay="200"
                         >
                             <v-card
+                                v-if="$store.state.filter_grade === user.grade || !$store.state.filter_grade && !$store.state.filter_major || $store.state.filter === '選択' || $store.state.filter_major === user.major "
                                 :elevation="hover ? 16 : 2"
                                 class="d-flex  mx-auto card"
                                 max-width="400"
@@ -42,7 +29,7 @@
                                     <p class="display-1 text--primary">
                                         {{user.name}}
                                     </p>
-                                    <p>{{user.grade}}年 {{user.major}} {{user.position}}</p>
+                                    <p>{{user.grade}}年 {{user.major}} {{user.group}}</p>
                                     <div class="text--primary">
                                         最近はサーバー構築やってるよ!<br>
                                         気軽に話しかけてね
@@ -65,13 +52,7 @@
 
   export default {
     data: () => ({
-        
-        users:[
-            {id:1,img:require("../assets/logo.png"),name:"鈴木健介",grade:"3",major:"kk",position:"インフラ班"},
-            {id:2,img:require("../assets/logo.png"),name:"山田太郎",grade:"3",major:"kk",position:"クリエイティブ班"},
-            {id:3,img:require("../assets/logo.png"),name:"田中綾子",grade:"2",major:"kk",position:"インフラ班"},
-            {id:4,img:require("../assets/logo.png"),name:"山下恵子",grade:"1",major:"kx",position:"クリエイティブ班"}
-        ],
+    
         // b:[
         //     {id:1,filter:"学年"},
         //     {id:2,filter:"専攻"},
@@ -81,16 +62,15 @@
         //     {id:6,filter:"言語"},
         //     {id:7,filter:"技術"},
         // ],
-        filterlist: ['選択','学年','専攻','役員','所属','言語','技術'],
-        filterlistdetails:[
-            {
-                grade:['1','2','3','4'],
-                major: ['kk','kx'],
-                technology: ['C','Java'],
-                position: ['クリエイティブ班','インフラ班'],
-            }
-        ],
+        
     }),
+    methods: {
+        reset_filter(filter){
+            if(filter === '選択'){
+                this.filter_grade = ""
+            }
+        }
+    }
   }
 </script>
 <style>
