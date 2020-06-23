@@ -1,6 +1,12 @@
 <template>
     <v-container > <!-- fluidを付けることで左右いっぱいにコンテナが広がります -->
         <div class="registration">
+
+        <v-form
+            ref="form"
+            v-model="valid"
+            lazy-validation
+            >
             <v-card
             class="mx-auto"
             max-width="800"
@@ -175,14 +181,6 @@
                 </v-list-item>
             </v-card>
 
-
-            <v-form
-            ref="form"
-            v-model="valid"
-            lazy-validation
-            >
-          
-
             <v-checkbox
             v-model="checkbox"
             :rules="[v => !!v || 'You must agree to continue!']"
@@ -263,19 +261,18 @@
       e7: [],
       states: [
         'C', 'C++', 'C#', 'Java',
-        'Python2', 'Python3', '', 'Connecticut',
-        'Delaware', 'District of Columbia', 'Federated States of Micronesia',
-        'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho',
-        'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
-        'Louisiana', 'Maine', 'Marshall Islands', 'Maryland',
-        'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
-        'Missouri', 'Montana', 'Nebraska', 'Nevada',
-        'New Hampshire', 'New Jersey', 'New Mexico', 'New York',
-        'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio',
+        'Python2', 'Python3', 'PHP', 'Ruby',
+        'Perl', 'Objective-C', 'Swift',
+        'VB', 'ActionScript', 'R言語', 'Groovy', 'Haskell',
+        'Scala', 'Erlang', 'Go言語', 'JavaScript', 'HTML5',
+        'CSS3', 'CoffeeScript', 'Haml', 'Sass',
+        'TypeScript', 'SQL', 'PL/SQL', 'COBOL',
+        'ABAP', 'Kotlin', 'Rust', 'AHDL',
+        'Bash', 'Clojure', 'ClojureScript', 'Common Lisp',
+        'CUDA C/C++', 'ECMAScript', 'Elixir', 'F#',
         'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico',
-        'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee',
-        'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia',
-        'Washington', 'West Virginia', 'Wisconsin', 'Wyoming',
+        'Lua', 'MATLAB', 'Nim', 'Objective Caml (OCaml)',
+        'Prolog', 'Scheme', 'Verilog HDL', 'VHDL'
       ],
       checkbox: false,
     }),
