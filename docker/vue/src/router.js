@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./pages/home";
-import Test from "./pages/test";
+import Home from "./pages/Home";
+import Test from "./pages/Test";
+import Registration_Form from "./pages/Registration_Form";
 
 Vue.use(Router);
 
@@ -11,13 +12,18 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "home",
+      name: "Home",
       component: Home
     },
     {
-      path: "/test",
-      name: "test",
+      path: "/Test",
+      name: "Test",
       component: Test
+    },
+    {
+      path: "/Registration_Form",
+      name: "Registration_Form",
+      component: Registration_Form
     }
   ]
 });
