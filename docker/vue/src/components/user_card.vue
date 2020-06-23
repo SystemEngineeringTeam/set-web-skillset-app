@@ -19,39 +19,39 @@
             <v-row>
                 <div v-for="user in users" :key="user.id">
                     <v-col cols="12">
-                        <v-card
-                            class="d-flex  mx-auto"
-                            max-width="400"
+                        <v-hover
+                        v-slot:default="{ hover }"
+                        open-delay="200"
                         >
-                            <v-responsive
-                                class="text-center grey lighten-2 rounded-circle d-inline-flex align-center justify-center ma-3"
-                                height="108"
-                                width="108"
-                                >
-                                
-                                <v-img v-bind:src='user.img'>
-                                </v-img>
-
-                            </v-responsive>
-                            <v-card-text>
-                                <p class="display-1 text--primary">
-                                    {{user.name}}
-                                </p>
-                                <p>{{user.grade}}年 {{user.major}} {{user.position}}</p>
-                                <div class="text--primary">
-                                    最近はサーバー構築やってるよ!<br>
-                                    気軽に話しかけてね
-                                </div>
-                                <v-card-actions>
-                                    <v-btn
-                                        text
-                                        color="deep-purple accent-4"
+                            <v-card
+                                :elevation="hover ? 16 : 2"
+                                class="d-flex  mx-auto card"
+                                max-width="400"
+                            >
+                                <v-responsive
+                                    class="text-center grey lighten-2 rounded-circle d-inline-flex align-center justify-center ma-3"
+                                    height="108"
+                                    width="108"
                                     >
-                                        Learn More
-                                    </v-btn>
-                                </v-card-actions>
-                            </v-card-text>
-                        </v-card>
+                                    
+                                    <v-img v-bind:src='user.img'>
+                                    </v-img>
+
+                                </v-responsive>
+                                <v-card-text>
+                                    <p class="display-1 text--primary">
+                                        {{user.name}}
+                                    </p>
+                                    <p>{{user.grade}}年 {{user.major}} {{user.position}}</p>
+                                    <div class="text--primary">
+                                        最近はサーバー構築やってるよ!<br>
+                                        気軽に話しかけてね
+                                    </div>
+                                    <v-card-actions>                         
+                                    </v-card-actions>
+                                </v-card-text>
+                            </v-card>
+                        </v-hover>
                     </v-col>
                 </div>
             </v-row>
@@ -68,9 +68,9 @@
         
         users:[
             {id:1,img:require("../assets/logo.png"),name:"鈴木健介",grade:"3",major:"kk",position:"インフラ班"},
-            {id:2,img:require("../assets/logo.png"),name:"鈴木健介",grade:"3",major:"kk",position:"インフラ班"},
-            {id:3,img:require("../assets/logo.png"),name:"鈴木健介",grade:"3",major:"kk",position:"インフラ班"},
-            {id:4,img:require("../assets/logo.png"),name:"鈴木健介",grade:"3",major:"kk",position:"インフラ班"}
+            {id:2,img:require("../assets/logo.png"),name:"山田太郎",grade:"3",major:"kk",position:"クリエイティブ班"},
+            {id:3,img:require("../assets/logo.png"),name:"田中綾子",grade:"2",major:"kk",position:"インフラ班"},
+            {id:4,img:require("../assets/logo.png"),name:"山下恵子",grade:"1",major:"kx",position:"クリエイティブ班"}
         ],
         // b:[
         //     {id:1,filter:"学年"},
@@ -93,4 +93,19 @@
     }),
   }
 </script>
+<style>
 
+.card{
+  animation: anim 1s;
+}
+
+@keyframes anim {
+  0% {
+  transform: translateX(600px);
+  }
+
+  100% {
+  transform: translateX(0px);
+  }
+}
+</style>
