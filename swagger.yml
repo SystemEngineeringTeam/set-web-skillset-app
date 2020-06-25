@@ -1,0 +1,171 @@
+swagger: "2.0"
+info:
+  description: シス研メンバーのスキルセットがみられるアプリ
+  version: "1.0.0"
+  title: "TechTrain MISSION Game API"
+host: "localhost:8080"
+tags:
+  - name: "member"
+    description: "会員名簿関連"
+schemes:
+  - "http"
+paths:
+  /member/get:
+    get:
+      tags:
+        - "member"
+      summary: "会員一覧API"
+      description: "会員一覧を取得。\n"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          "description": "A successful response."
+          "schema":
+            $ref: "#/definitions/memberObject"
+
+  /member/add:
+    post:
+      tags:
+        - "member"
+      summary: "会員追加API"
+      description: "会員を追加。\n"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "header"
+          name: "pass"
+          description: "会員追加,更新等する際に必要な共通パス"
+          required: true
+          type: "string"
+        - in: "body"
+          name: "body"
+          description: "Request Body"
+          required: true
+          schema:
+            $ref: "#/definitions/memberObject"
+      responses:
+        200:
+          "description": "A successful response."
+          "schema":
+            type: object
+            properties:
+              id :
+                type: string
+
+  /member/update:
+    put:
+      tags:
+        - "member"
+      summary: "会員情報更新API"
+      description: "ユーザ情報の更新をします。"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "header"
+          name: "pass"
+          description: "会員追加,更新等する際に必要な共通パス"
+          required: true
+          type: "string"
+        - in: "body"
+          name: "body"
+          description: "Request Body"
+          required: true
+          schema:
+            $ref: "#/definitions/memberObject"
+      responses:
+        200:
+          "description": "A successful response."
+
+  /member/delete:
+    delete:
+      tags:
+        - "member"
+      summary: "会員削除API"
+      description: "ユーザ情報の削除をします。"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "header"
+          name: "pass"
+          description: "会員追加,更新等する際に必要な共通パス"
+          required: true
+          type: "string"
+        - in: "header"
+          name: "id"
+          description: "会員情報のid"
+          required: true
+          type: "string"
+      responses:
+        200:
+          "description": "A successful response."
+
+definitions:
+  memberObject:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          example: "uuid"
+        image:
+          type: "string"
+        name:
+          type: "string"
+          example: "織田信長"
+        grade:
+          type: "string"
+          example: "1年生"
+        major:
+          type: "string"
+          example: "KK"
+        position:
+          type: "string"
+          example: "nullか役員名"
+        group:
+          type: "array"
+          items:
+            type: "string"
+            example: "クリエイティブ"
+        technical_area:
+          type: "array"
+          items:
+            type: "string"
+            example: "Webフロント"
+        technology:
+          type: "array"
+          items:
+            type: "string"
+            example: "go"
+        product:
+          type: "array"
+          items:
+            type: "object"
+            properties:
+              overview:
+                type: "string"
+                example: "こんなもの作りました"
+              url:
+                type: "string"
+                example: "url"
+        message:
+          type: "string"
+          example: "何々得意です。よろしくお願いします"
+        slack:
+          type: "string"
+          example: "表示名"
+        twitter:
+          type: "string"
+          example: "url"
+        github:
+          type: "string"
+          example: "url"
