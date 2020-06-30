@@ -110,62 +110,60 @@ paths:
 
 definitions:
   memberObject:
-    type: "array"
-    items:
-      type: "object"
-      properties:
-        id:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "uuid"
+      image:
+        type: "string"
+      name:
+        type: "string"
+        example: "織田信長"
+      grade:
+        type: "string"
+        example: "1年生"
+      major:
+        type: "string"
+        example: "KK"
+      position:
+        type: "string"
+        example: "nullか役員名"
+      group:
+        type: "array"
+        items:
           type: "string"
-          example: "uuid"
-        image:
+          example: "クリエイティブ"
+      technical_area:
+        type: "array"
+        items:
           type: "string"
-        name:
+          example: "Webフロント"
+      technology:
+        type: "array"
+        items:
           type: "string"
-          example: "織田信長"
-        grade:
-          type: "string"
-          example: "1年生"
-        major:
-          type: "string"
-          example: "KK"
-        position:
-          type: "string"
-          example: "nullか役員名"
-        group:
-          type: "array"
-          items:
-            type: "string"
-            example: "クリエイティブ"
-        technical_area:
-          type: "array"
-          items:
-            type: "string"
-            example: "Webフロント"
-        technology:
-          type: "array"
-          items:
-            type: "string"
-            example: "go"
-        product:
-          type: "array"
-          items:
-            type: "object"
-            properties:
-              overview:
-                type: "string"
-                example: "こんなもの作りました"
-              url:
-                type: "string"
-                example: "url"
-        message:
-          type: "string"
-          example: "何々得意です。よろしくお願いします"
-        slack:
-          type: "string"
-          example: "表示名"
-        twitter:
-          type: "string"
-          example: "url"
-        github:
-          type: "string"
-          example: "url"
+          example: "go"
+      product:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            overview:
+              type: "string"
+              example: "こんなもの作りました"
+            url:
+              type: "string"
+              example: "url"
+      message:
+        type: "string"
+        example: "何々得意です。よろしくお願いします"
+      slack:
+        type: "string"
+        example: "表示名"
+      twitter:
+        type: "string"
+        example: "url"
+      github:
+        type: "string"
+        example: "url"
