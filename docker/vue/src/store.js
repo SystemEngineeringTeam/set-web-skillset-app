@@ -49,18 +49,18 @@ export default new Vuex.Store({
         group: "クリエイティブ班"
       }
     ],
-    filter: [],
-    show_filter: [
-      {
-        grade: false,
-        major: false,
-        position: false,
-        group: false
-      }
-    ],
+    filter: "",
+    // show_filter: [
+    //   {
+    //     grade: false,
+    //     major: false,
+    //     position: false,
+    //     group: false
+    //   }
+    // ],
     filter_grade: "",
     filter_major: "",
-    filterlist: ["学年", "専攻", "役員", "所属", "言語", "技術"],
+    filterlist: ["選択", "学年", "専攻", "所属", "言語", "技術"],
     grade: ["1", "2", "3", "4"],
     major: [
       "EE",
@@ -78,7 +78,8 @@ export default new Vuex.Store({
       "KK",
       "KX"
     ],
+    group: ["クリエイティブ班", "インフラ班"],
     technology: ["C", "Java"],
-    group: ["クリエイティブ班", "インフラ班"]
+    technical_area: ["フロントエンド", "バックエンド"]
   }
 });
