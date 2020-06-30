@@ -11,7 +11,8 @@ twitter url
 github url
 grade_id int Fk >- grades.id
 major_id int Fk >- majors.id
-
+created_at datetime
+updated_at datetime
 
 grades
 -
