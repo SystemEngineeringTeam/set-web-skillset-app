@@ -2,7 +2,7 @@
 <template>
     <v-layout wrap> <!-- wrap属性をつけるのがポイント -->
         <v-flex class="d-flex" xs='12' sm='6' md='4'>
-            <v-row >
+            <v-row>
                 <div v-for="user in $store.state.users" :key="user.id">
                     <v-col cols="12">
                         <v-hover
@@ -23,7 +23,7 @@
                                     
                                     <v-img v-bind:src='user.img'>
                                     </v-img>
-
+                                    
                                 </v-responsive>
                                 <v-card-text>
                                     <p class="display-1 text--primary">
