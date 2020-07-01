@@ -24,7 +24,9 @@ paths:
         200:
           "description": "A successful response."
           "schema":
-            $ref: "#/definitions/memberObject"
+            type: "array"
+            items:
+              $ref: "#/definitions/memberObject"
 
   /member/add:
     post:
