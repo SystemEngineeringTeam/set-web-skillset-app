@@ -60,6 +60,9 @@ export default new Vuex.Store({
     // ],
     filter_grade: "",
     filter_major: "",
+    filter_group: "",
+    filter_technology: "",
+    filter_technical_area: "",
     filterlist: ["選択", "学年", "専攻", "所属", "言語", "技術"],
     grade: ["1", "2", "3", "4"],
     major: [
@@ -81,5 +84,23 @@ export default new Vuex.Store({
     group: ["クリエイティブ班", "インフラ班"],
     technology: ["C", "Java"],
     technical_area: ["フロントエンド", "バックエンド"]
-  }
+  },
+  mutations: {
+    update_filter_grade(store, grade) {
+      store.filter_grade = grade;
+    },
+    update_filter_major(store, major) {
+      store.filter_major = major;
+    },
+    update_filter_group(store, group) {
+      store.filter_group = group;
+    },
+    update_filter_technology(store, technology) {
+      store.filter_technology = technology;
+    },
+    update_filter_technical_area(store, technical_area) {
+      store.filter_technical_area = technical_area;
+    }
+  },
+  actions: {}
 });

@@ -3,14 +3,15 @@
     <v-layout wrap> <!-- wrap属性をつけるのがポイント -->
         <v-flex class="d-flex" xs='12' sm='6' md='4'>
             <v-row>
-                <div v-for="user in $store.state.users" :key="user.id">
+            {{this.$store.state.filter_grade}}
+                <div v-for="user in this.$store.state.users" :key="user.id">
                     <v-col cols="12">
                         <v-hover
                         v-slot:default="{ hover }"
                         open-delay="200"
                         >
                             <v-card
-                                v-if="$store.state.filter_grade === user.grade || !$store.state.filter_grade && !$store.state.filter_major || $store.state.filter === '選択' || $store.state.filter_major === user.major "
+                                v-if="$store.state.filter_grade === user.grade || !$store.state.filter_grade && !$store.state.filter_major"
                                 :elevation="hover ? 16 : 2"
                                 class="d-flex  mx-auto card"
                                 max-width="400"
@@ -52,16 +53,6 @@
 
   export default {
     data: () => ({
-    
-        // b:[
-        //     {id:1,filter:"学年"},
-        //     {id:2,filter:"専攻"},
-        //     {id:3,filter:"役員"},
-        //     {id:4,filter:"所属"},
-        //     {id:5,filter:"役員"},
-        //     {id:6,filter:"言語"},
-        //     {id:7,filter:"技術"},
-        // ],
         
     }),
     methods: {
