@@ -1,0 +1,6 @@
+#使うDockerイメージ
+FROM mysql:5.7
+
+RUN apt-get update && apt-get -y install vim
+#docker runに実行される
+#CMD ["mysqld"]

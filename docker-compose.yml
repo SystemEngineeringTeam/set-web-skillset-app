@@ -32,10 +32,11 @@ services:
     command: sh -c "go run main.go"
 
   mysql:
-    image: mysql:5.7
+    build: ./db/
     volumes:
       - ./db/db-data:/var/lib/mysql
       - ./db/mysql/init/:/docker-entrypoint-initdb.d
+      - ./db/conf.d:/etc/mysql/conf.d/my.cnf
     ports:
       - "3306:3306"
     container_name: skill-set-mysql
