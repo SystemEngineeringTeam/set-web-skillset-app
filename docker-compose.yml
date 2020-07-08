@@ -36,13 +36,13 @@ services:
     volumes:
       - ./db/db-data:/var/lib/mysql
       - ./db/mysql/init/:/docker-entrypoint-initdb.d
-      - ./db/conf.d:/etc/mysql/conf.d/my.cnf
+      - ./db/conf.d:/etc/mysql
     ports:
       - "3306:3306"
     container_name: skill-set-mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+  # command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
   # nginx:
   #   image: nginx
   #   depends_on:
