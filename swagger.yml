@@ -134,18 +134,16 @@ definitions:
       group:
         type: "array"
         items:
-          type: "string"
-          example: "クリエイティブ"
+          type: "number"
+          example: "0"
       technical_area:
         type: "array"
         items:
-          type: "string"
-          example: "Webフロント"
+          type: "number"
       technology:
         type: "array"
         items:
-          type: "string"
-          example: "go"
+          type: "number"
       product:
         type: "array"
         items:
