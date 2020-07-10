@@ -17,12 +17,12 @@ updated_at datetime
 technical_areas_of_members
 -
 member_id uuid  PK FK >- members.id
-technical_area_id int PK FK >- technical_areas.id
+technical_area_id int PK
 
 technologies_of_members
 -
 member_id uuid  PK FK >- members.id
-technology_id int PK FK >- technologies.id
+technology_id int PK
 
 groups_of_members
 -
