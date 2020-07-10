@@ -11,15 +11,22 @@ twitter url
 github url
 grade_id int
 major_id int
-groups_id int
-technical_areas_id int
-technologies_id int
 created_at datetime
 updated_at datetime
 
-groups_of_members	
--	
-member_id uuid  PK FK >- members.id	
+technical_areas_of_members
+-
+member_id uuid  PK FK >- members.id
+technical_area_id int PK FK >- technical_areas.id
+
+technologies_of_members
+-
+member_id uuid  PK FK >- members.id
+technology_id int PK FK >- technologies.id
+
+groups_of_members
+-
+member_id uuid  PK FK >- members.id
 group_id int PK
 
 products_of_members
