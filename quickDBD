@@ -9,52 +9,15 @@ message string
 slack 表示名
 twitter url
 github url
-grade_id int Fk >- grades.id
-major_id int Fk >- majors.id
+grade_id int
+major_id int
+groups_id int
+technical_areas_id int
+technologies_id int
 created_at datetime
 updated_at datetime
 
-grades
--
-id PK int
-text string
-
-majors
--
-id PK int
-text string
-
-groups
--
-id pk int
-text string
-
-technical_areas
--
-id PK int
-text string
-
-technologies
--
-id PK int
-text string
-
-groups_of_members
--
-member_id uuid  PK FK >- members.id
-group_id int PK FK >- groups.id
-
-technical_areas_of_members
--
-member_id uuid  PK FK >- members.id
-technical_area_id int PK FK >- technical_areas.id
-
-technologies_of_members
--
-member_id uuid  PK FK >- members.id
-technology_id int PK FK >- technologies.id
-
-product_of_members
+products_of_members
 -
 id PK int
 member_id uuid  FK >- members.id
