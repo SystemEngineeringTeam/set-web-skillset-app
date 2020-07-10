@@ -122,15 +122,15 @@ definitions:
       name:
         type: "string"
         example: "織田信長"
-      grade:
-        type: "string"
-        example: "1年生"
-      major:
-        type: "string"
-        example: "KK"
-      position:
-        type: "string"
-        example: "nullか役員名"
+      grade_id:
+        type: "number"
+        example: "0"
+      major_id:
+        type: "number"
+        example: "0"
+      position_id:
+        type: "number"
+        example: "0"
       group:
         type: "array"
         items:
