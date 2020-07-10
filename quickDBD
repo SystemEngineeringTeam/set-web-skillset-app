@@ -17,6 +17,11 @@ technologies_id int
 created_at datetime
 updated_at datetime
 
+groups_of_members	
+-	
+member_id uuid  PK FK >- members.id	
+group_id int PK
+
 products_of_members
 -
 id PK int
