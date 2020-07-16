@@ -2,6 +2,15 @@
     <div class="test">
         test
         <div class="box"></div>
+        <v-sheet
+          class="d-flex"
+          color="teal lighten-3"
+          height="300"
+        >
+          <sheet-footer>
+            #4: (2r x 1c)
+          </sheet-footer>
+        </v-sheet>
     </div>
 </template>
 
