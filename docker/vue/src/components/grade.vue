@@ -1,20 +1,15 @@
-
 <template>
   <v-layout wrap>
     <!-- wrap属性をつけるのがポイント -->
     <v-flex class="d-flex" xs="12" sm="6" md="4">
       <v-row>
-        <template v-if="this.$store.state.change_display === '学年'">
-          <Grade/>
-        </template>
-        <template v-else>
-          <!-- {{this.$store.state.users}} -->
-          <div v-for="user in this.$store.state.users" :key="user.id">
-            <!-- {{user}} -->
-            <v-col cols="12">
+        <div v-for="(grade,i) in $store.state.grades" :key="i">
+          <p>{{i+1}}年生</p>
+          <v-sheet class="d-flex" color="teal lighten-3" height="300" width="2000">
+            <div v-for="user in $store.state.users" :key="user.id">
               <v-hover v-slot:default="{ hover }" open-delay="200">
                 <v-card
-                  v-if="$store.state.filter_grade === user.grade || !$store.state.filter_grade && !$store.state.filter_major"
+                  v-if="user.grade === grade"
                   :elevation="hover ? 16 : 2"
                   class="d-flex mx-auto card"
                   max-width="400"
@@ -37,45 +32,18 @@
                   </v-card-text>
                 </v-card>
               </v-hover>
-            </v-col>
-          </div>
-        </template>
+            </div>
+          </v-sheet>
+        </div>
       </v-row>
     </v-flex>
-    <!--<v-flex xs='12' sm='6' md='4'>コンテンツ</v-flex>
-        <v-flex xs='12' sm='6' md='4'>コンテンツ</v-flex>
-    <v-flex xs='12' sm='6' md='4'>コンテンツ</v-flex>!-->
   </v-layout>
 </template>
 <script>
-import Grade from "./grade";
-
 export default {
   data: () => ({}),
-  methods: {
-    reset_filter(filter) {
-      if (filter === "選択") {
-        this.filter_grade = "";
-      }
-    }
-  },
-  components: {
-    Grade
-  }
+  methods: {}
 };
 </script>
-<style>
-.card {
-  animation: anim 1s;
-}
 
-@keyframes anim {
-  0% {
-    transform: translateX(600px);
-  }
 
-  100% {
-    transform: translateX(0px);
-  }
-}
-</style>
