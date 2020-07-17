@@ -9,13 +9,7 @@
         <template v-else>
           <div v-for="user in this.$store.state.users" :key="user.id">
             <v-col cols="12">
-              <UserCard
-                :img="user.img"
-                :name="user.name"
-                :grade="user.grade"
-                :major="user.major"
-                :group="user.group"
-              ></UserCard>
+              <UserCard :user="user"></UserCard>
             </v-col>
           </div>
         </template>
