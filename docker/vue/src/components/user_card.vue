@@ -1,11 +1,10 @@
-
 <template>
   <v-layout wrap>
     <!-- wrap属性をつけるのがポイント -->
     <v-flex class="d-flex" xs="12" sm="6" md="4">
       <v-row>
         <template v-if="this.$store.state.change_display === '学年'">
-          <Grade/>
+          <Grade />
         </template>
         <template v-else>
           <!-- {{this.$store.state.users}} -->
@@ -14,7 +13,10 @@
             <v-col cols="12">
               <v-hover v-slot:default="{ hover }" open-delay="200">
                 <v-card
-                  v-if="$store.state.filter_grade === user.grade || !$store.state.filter_grade && !$store.state.filter_major"
+                  v-if="
+                    $store.state.filter_grade === user.grade ||
+                      (!$store.state.filter_grade && !$store.state.filter_major)
+                  "
                   :elevation="hover ? 16 : 2"
                   class="d-flex mx-auto card"
                   max-width="400"
@@ -27,11 +29,11 @@
                     <v-img v-bind:src="user.img"></v-img>
                   </v-responsive>
                   <v-card-text>
-                    <p class="display-1 text--primary">{{user.name}}</p>
-                    <p>{{user.grade}}年 {{user.major}} {{user.group}}</p>
+                    <p class="display-1 text--primary">{{ user.name }}</p>
+                    <p>{{ user.grade }}年 {{ user.major }} {{ user.group }}</p>
                     <div class="text--primary">
                       最近はサーバー構築やってるよ!
-                      <br>気軽に話しかけてね
+                      <br />気軽に話しかけてね
                     </div>
                     <v-card-actions></v-card-actions>
                   </v-card-text>
@@ -57,11 +59,11 @@ export default {
       if (filter === "選択") {
         this.filter_grade = "";
       }
-    }
+    },
   },
   components: {
-    Grade
-  }
+    Grade,
+  },
 };
 </script>
 <style>

@@ -3,14 +3,14 @@
     test
     <div class="box"></div>
     <v-sheet class="d-flex" color="teal lighten-3" height="300">
-      <sheet-footer>#4: (2r x 1c)</sheet-footer>
-    </v-sheet>aa
+      <sheet-footer>#4: (2r x 1c)</sheet-footer> </v-sheet
+    >aa
   </div>
 </template>
 
 <script>
 export default {
-  data: () => ({})
+  data: () => ({}),
 };
 </script>
 <style>
