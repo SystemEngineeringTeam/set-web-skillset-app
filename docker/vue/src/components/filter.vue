@@ -14,7 +14,7 @@
       xs="2"
       sm="2"
       md="2"
-      v-for="(filter_item,i) in filter_items"
+      v-for="(filter_item, i) in filter_items"
       :key="i"
     >
       <v-select
@@ -32,7 +32,7 @@
 export default {
   data: () => ({
     filter_data: [],
-    filter_items: []
+    filter_items: [],
   }),
   created() {
     this.filter_add();
@@ -42,26 +42,26 @@ export default {
       this.filter_items.push(
         {
           title: "学年選択",
-          filter: this.$store.state.grades
+          filter: this.$store.state.grades,
         },
         {
           title: "専攻選択",
-          filter: this.$store.state.major
+          filter: this.$store.state.major,
         },
         {
           title: "所属選択",
-          filter: this.$store.state.group
+          filter: this.$store.state.group,
         },
         {
           title: "言語選択",
-          filter: this.$store.state.technology
+          filter: this.$store.state.technology,
         },
         {
           title: "技術選択",
-          filter: this.$store.state.technical_area
+          filter: this.$store.state.technical_area,
         }
       );
-    }
+    },
     //   filter_add(){
     //         this.filter_items.push({title:"学年選択",filter:this.$store.state.grade,set_filter:this.update_filter_grade(this.filter_data[0])},
     //                                 {title:"専攻選択",filter:this.$store.state.major,set_filter:this.update_filter_major(this.filter_data[1])},
@@ -76,6 +76,6 @@ export default {
     //       "update_filter_technology",
     //       "update_filter_technical_area"
     //     ])
-  }
+  },
 };
 </script>

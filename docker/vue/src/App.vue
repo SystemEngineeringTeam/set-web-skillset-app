@@ -1,36 +1,29 @@
 <template>
   <v-app>
     <v-content>
-       <router-link to="/">
-        <v-btn>
-          homeページに遷移する
-        </v-btn>
+      <router-link to="/">
+        <v-btn>homeページに遷移する</v-btn>
       </router-link>
-       <router-link to="/test">
-        <v-btn>
-          testページに遷移する
-        </v-btn>
+      <router-link to="/test">
+        <v-btn>testページに遷移する</v-btn>
       </router-link>
       <router-link to="/Registration_Form">
-        <v-btn>
-          登録ページに遷移する
-        </v-btn>
+        <v-btn>登録ページに遷移する</v-btn>
       </router-link>
-      <router-view/>
+      <router-view />
     </v-content>
-    <Footer/>
+    <Footer />
   </v-app>
 </template>
 
 <script>
-import Footer from './components/footer';
+import Footer from "./components/footer";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-        Footer,
+    Footer
   },
 
-  data: () => ({
-  }),
+  data: () => ({})
 };
 </script>
