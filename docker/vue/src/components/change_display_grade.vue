@@ -13,13 +13,7 @@
           >
             <div v-for="user in $store.state.users" :key="user.id">
               <template v-if="user.grade === grade">
-                <UserCard
-                  :img="user.img"
-                  :name="user.name"
-                  :grade="user.grade"
-                  :major="user.major"
-                  :group="user.group"
-                ></UserCard>
+                <UserCard :user="user"></UserCard>
               </template>
             </div>
           </v-sheet>

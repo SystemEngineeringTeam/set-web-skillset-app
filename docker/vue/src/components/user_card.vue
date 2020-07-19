@@ -2,8 +2,16 @@
   <v-hover v-slot:default="{ hover }" open-delay="200">
     <v-card
       v-if="
-        $store.state.filter_grade === grade ||
-          (!$store.state.filter_grade && !$store.state.filter_major)
+        $store.state.filter_grade === user.grade ||
+          $store.state.filter_major === user.major ||
+          $store.state.filter_group === user.group ||
+          $store.state.filter_technology === user.technology ||
+          $store.state.filter_technical_area === user.technical_area ||
+          (!$store.state.filter_grade &&
+            !$store.state.filter_major &&
+            !$store.state.filter_group &&
+            !$store.state.filter_technology &&
+            !$store.state.filter_technical_area)
       "
       :elevation="hover ? 16 : 2"
       class="d-flex mx-auto card"
@@ -14,11 +22,11 @@
         height="108"
         width="108"
       >
-        <v-img v-bind:src="img"></v-img>
+        <v-img v-bind:src="user.img"></v-img>
       </v-responsive>
       <v-card-text>
-        <p class="display-1 text--primary">{{ name }}</p>
-        <p>{{ grade }}年 {{ major }} {{ group }}</p>
+        <p class="display-1 text--primary">{{ user.name }}</p>
+        <p>{{ user.grade }}年 {{ user.major }} {{ user.group }}</p>
         <div class="text--primary">
           最近はサーバー構築やってるよ!
           <br />気軽に話しかけてね
@@ -30,7 +38,7 @@
 </template>
 <script>
 export default {
-  props: ["img", "name", "grade", "major", "group"],
+  props: ["user"],
   data: () => ({}),
   methods: {},
 };
