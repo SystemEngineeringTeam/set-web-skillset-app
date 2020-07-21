@@ -7,7 +7,8 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
-    users: [{
+    users: [
+      {
         id: 1,
         img: require("./assets/logo.png"),
         name: "鈴木健介",
@@ -15,7 +16,7 @@ export default new Vuex.Store({
         major: "KK",
         group: "インフラ班",
         technology: "C",
-        technical_area: "Webフロントエンド"
+        technical_area: "Webフロントエンド",
       },
       {
         id: 2,
@@ -25,7 +26,7 @@ export default new Vuex.Store({
         major: "KK",
         group: "クリエイティブ班",
         technology: "Java",
-        technical_area: "Webフロントエンド"
+        technical_area: "Webフロントエンド",
       },
       {
         id: 3,
@@ -35,7 +36,7 @@ export default new Vuex.Store({
         major: "KK",
         group: "インフラ班",
         technology: "JavaScript",
-        technical_area: "Webフロントエンド"
+        technical_area: "Webフロントエンド",
       },
       {
         id: 4,
@@ -45,7 +46,7 @@ export default new Vuex.Store({
         major: "KX",
         group: "クリエイティブ班",
         technology: "C++",
-        technical_area: "Webバックエンド"
+        technical_area: "Webバックエンド",
       },
       {
         id: 5,
@@ -55,7 +56,7 @@ export default new Vuex.Store({
         major: "KX",
         group: "クリエイティブ班",
         technology: "C#",
-        technical_area: "Webバックエンド"
+        technical_area: "Webバックエンド",
       },
       {
         id: 6,
@@ -65,8 +66,8 @@ export default new Vuex.Store({
         major: "KX",
         group: "クリエイティブ班",
         technology: "PHP",
-        technical_area: "Webバックエンド"
-      }
+        technical_area: "Webバックエンド",
+      },
     ],
     filter: "",
     filter_grade: "",
@@ -77,7 +78,7 @@ export default new Vuex.Store({
     change_display: "",
     filterlist: ["選択", "学年", "専攻", "所属", "言語", "技術"],
     grades: ["1", "2", "3", "4"],
-    major: [
+    majors: [
       "EE",
       "EV",
       "CC",
@@ -91,10 +92,11 @@ export default new Vuex.Store({
       "HT",
       "HH",
       "KK",
-      "KX"
+      "KX",
     ],
     group: ["クリエイティブ班", "インフラ班"],
-    technology: ["C",
+    technology: [
+      "C",
       "C++",
       "C#",
       "Java",
@@ -149,7 +151,7 @@ export default new Vuex.Store({
       "Verilog HDL",
       "VHDL",
     ],
-    technical_area: ["Webフロントエンド", "Webバックエンド"]
+    technical_area: ["Webフロントエンド", "Webバックエンド"],
   },
   mutations: {
     update_filter_grade(store, grade) {
@@ -166,7 +168,7 @@ export default new Vuex.Store({
     },
     update_filter_technical_area(store, technical_area) {
       store.filter_technical_area = technical_area;
-    }
+    },
   },
-  actions: {}
+  actions: {},
 });
