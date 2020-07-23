@@ -16,7 +16,7 @@ export default new Vuex.Store({
         major: "KK",
         group: "インフラ班",
         technologys: ["C", "C++"],
-        technical_area: "Webフロントエンド",
+        technical_areas: ["Webフロントエンド", "Webバックエンド"],
       },
       {
         id: 2,
@@ -26,7 +26,7 @@ export default new Vuex.Store({
         major: "KK",
         group: "クリエイティブ班",
         technologys: ["Java"],
-        technical_area: "Webフロントエンド",
+        technical_areas: ["Webフロントエンド"],
       },
       {
         id: 3,
@@ -36,7 +36,7 @@ export default new Vuex.Store({
         major: "KK",
         group: "インフラ班",
         technologys: ["JavaScript"],
-        technical_area: "Webフロントエンド",
+        technical_areas: ["Webフロントエンド"],
       },
       {
         id: 4,
@@ -46,7 +46,7 @@ export default new Vuex.Store({
         major: "KX",
         group: "クリエイティブ班",
         technologys: ["C++"],
-        technical_area: "Webバックエンド",
+        technical_areas: ["Webバックエンド"],
       },
       {
         id: 5,
@@ -56,7 +56,7 @@ export default new Vuex.Store({
         major: "KX",
         group: "クリエイティブ班",
         technologys: ["C#"],
-        technical_area: "Webバックエンド",
+        technical_areas: ["Webバックエンド"],
       },
       {
         id: 6,
@@ -66,7 +66,7 @@ export default new Vuex.Store({
         major: "KX",
         group: "クリエイティブ班",
         technologys: ["PHP"],
-        technical_area: "Webバックエンド",
+        technical_areas: ["Webバックエンド"],
       },
     ],
     filter: "",
@@ -151,7 +151,7 @@ export default new Vuex.Store({
       "Verilog HDL",
       "VHDL",
     ],
-    technical_area: ["Webフロントエンド", "Webバックエンド"],
+    technical_areas: ["Webフロントエンド", "Webバックエンド"],
   },
   mutations: {
     update_filter_grade(store, grade) {
