@@ -12,6 +12,9 @@
         <template v-else-if="this.$store.state.change_display === '所属'">
           <ChangeDisplayGroup />
         </template>
+        <template v-else-if="this.$store.state.change_display === '言語'">
+          <ChangeDisplayTechnology />
+        </template>
         <template v-else>
           <div v-for="user in this.$store.state.users" :key="user.id">
             <v-col cols="12">
@@ -30,6 +33,7 @@
 import ChangeDisplayGrade from "./change_display/grade";
 import ChangeDisplayMajor from "./change_display/major";
 import ChangeDisplayGroup from "./change_display/group";
+import ChangeDisplayTechnology from "./change_display/technology";
 import UserCard from "./user_card";
 
 export default {
@@ -45,6 +49,7 @@ export default {
     ChangeDisplayGrade,
     ChangeDisplayMajor,
     ChangeDisplayGroup,
+    ChangeDisplayTechnology,
     UserCard,
   },
 };
