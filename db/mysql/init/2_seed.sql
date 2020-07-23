@@ -1,3 +1,4 @@
+USE skillset;
 INSERT INTO members (
         id,
         image,
