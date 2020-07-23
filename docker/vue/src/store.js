@@ -15,7 +15,7 @@ export default new Vuex.Store({
         grade: "3",
         major: "KK",
         group: "インフラ班",
-        technology: "C",
+        technologys: ["C", "C++"],
         technical_area: "Webフロントエンド",
       },
       {
@@ -25,7 +25,7 @@ export default new Vuex.Store({
         grade: "3",
         major: "KK",
         group: "クリエイティブ班",
-        technology: "Java",
+        technologys: ["Java"],
         technical_area: "Webフロントエンド",
       },
       {
@@ -35,7 +35,7 @@ export default new Vuex.Store({
         grade: "2",
         major: "KK",
         group: "インフラ班",
-        technology: "JavaScript",
+        technologys: ["JavaScript"],
         technical_area: "Webフロントエンド",
       },
       {
@@ -45,7 +45,7 @@ export default new Vuex.Store({
         grade: "1",
         major: "KX",
         group: "クリエイティブ班",
-        technology: "C++",
+        technologys: ["C++"],
         technical_area: "Webバックエンド",
       },
       {
@@ -55,7 +55,7 @@ export default new Vuex.Store({
         grade: "3",
         major: "KX",
         group: "クリエイティブ班",
-        technology: "C#",
+        technologys: ["C#"],
         technical_area: "Webバックエンド",
       },
       {
@@ -65,7 +65,7 @@ export default new Vuex.Store({
         grade: "4",
         major: "KX",
         group: "クリエイティブ班",
-        technology: "PHP",
+        technologys: ["PHP"],
         technical_area: "Webバックエンド",
       },
     ],
@@ -95,7 +95,7 @@ export default new Vuex.Store({
       "KX",
     ],
     groups: ["クリエイティブ班", "インフラ班"],
-    technology: [
+    technologys: [
       "C",
       "C++",
       "C#",
