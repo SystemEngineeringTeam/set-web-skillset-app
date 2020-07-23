@@ -94,7 +94,7 @@ export default new Vuex.Store({
       "KK",
       "KX",
     ],
-    group: ["クリエイティブ班", "インフラ班"],
+    groups: ["クリエイティブ班", "インフラ班"],
     technology: [
       "C",
       "C++",

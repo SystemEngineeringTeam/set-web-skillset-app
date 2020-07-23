@@ -9,6 +9,9 @@
         <template v-else-if="this.$store.state.change_display === '専攻'">
           <ChangeDisplayMajor />
         </template>
+        <template v-else-if="this.$store.state.change_display === '所属'">
+          <ChangeDisplayGroup />
+        </template>
         <template v-else>
           <div v-for="user in this.$store.state.users" :key="user.id">
             <v-col cols="12">
@@ -26,6 +29,7 @@
 <script>
 import ChangeDisplayGrade from "./change_display/grade";
 import ChangeDisplayMajor from "./change_display/major";
+import ChangeDisplayGroup from "./change_display/group";
 import UserCard from "./user_card";
 
 export default {
@@ -35,13 +39,14 @@ export default {
       if (filter === "選択") {
         this.filter_grade = "";
       }
-    }
+    },
   },
   components: {
     ChangeDisplayGrade,
     ChangeDisplayMajor,
-    UserCard
-  }
+    ChangeDisplayGroup,
+    UserCard,
+  },
 };
 </script>
 <style></style>
