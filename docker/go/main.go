@@ -11,7 +11,7 @@ import (
 
 func test(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	var name string
-	err := db.QueryRow("SELECT user_name FROM users LIMIT 1").Scan(&name)
+	err := db.QueryRow("SELECT name FROM members LIMIT 1").Scan(&name)
 	if err != nil {
 		log.Fatal(err)
 	}
