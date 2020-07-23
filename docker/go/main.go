@@ -5,24 +5,49 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 )
 
-func test(w http.ResponseWriter, r *http.Request, db *sql.DB) {
-	var name string
-	err := db.QueryRow("SELECT name FROM members LIMIT 1").Scan(&name)
+type Member struct {
+	ID        string    `db:"id"`
+	Image     string    `db:"image"`
+	Name      string    `db:"name"`
+	Message   string    `db:"message"`
+	Slack     string    `db:"slack"`
+	Twitter   string    `db:"twitter"`
+	Github    string    `db:"github"`
+	GradeID   int       `db:"grade_id"`
+	MajorID   int       `db:"major_id"`
+	CreatedAt time.Time `db:"created_at"`
+	UpdatedAt time.Time `db:"updated_at"`
+}
+
+func get(w http.ResponseWriter, r *http.Request, db *sql.DB) {
+	rows, err := db.Query("SELECT name FROM members")
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer rows.Close()
 
-	println(name)
-
-	fmt.Fprintf(w, name)
+	for rows.Next() {
+		var member Member
+		if err := rows.Scan(&member.Name); err != nil {
+			log.Fatal(err)
+		}
+		fmt.Fprintf(w, member.Name)
+		fmt.Fprintf(w, "こんにちは")
+		fmt.Println(member.Name)
+		fmt.Println("こんにちは")
+	}
+	if err := rows.Err(); err != nil {
+		log.Fatal(err)
+	}
 }
 
 func main() {
-	fmt.Printf("Starting server at 'localhost:8082'\n")
+	fmt.Printf("Starting server at 'http://localhost:8082/'\n")
 
 	db, err := sql.Open("mysql", "root:root@tcp(mysql:3306)/skillset")
 	if err != nil {
@@ -31,7 +56,7 @@ func main() {
 	defer db.Close()
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		test(w, r, db)
+		get(w, r, db)
 	})
 	http.ListenAndServe(":8082", nil)
 }
