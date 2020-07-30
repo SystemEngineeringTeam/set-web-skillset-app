@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strconv"
+	"strings"
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -48,17 +50,19 @@ type ResponseMember struct {
 }
 
 func get(w http.ResponseWriter, r *http.Request, db *sql.DB) {
-	rows, err := db.Query("SELECT * FROM members")
+	// メンバーのデータと、member_idで紐づいた各種idをそれぞれ「,」で連結した文字列にして取得
+	memberRows, err := db.Query("SELECT a.*, GROUP_CONCAT( b.group_id SEPARATOR ',' ) FROM members a LEFT JOIN groups_of_members b on a.id = b.member_id GROUP BY a.id;")
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer rows.Close()
+	defer memberRows.Close()
 
 	var response []ResponseMember
 
-	for rows.Next() {
+	for memberRows.Next() {
 		var member Member
-		if err := rows.Scan(&member.ID, &member.Image, &member.Name, &member.Message, &member.Slack, &member.Twitter, &member.Github, &member.GradeID, &member.MajorID, &member.CreatedAt, &member.UpdatedAt); err != nil {
+		var groups string
+		if err := memberRows.Scan(&member.ID, &member.Image, &member.Name, &member.Message, &member.Slack, &member.Twitter, &member.Github, &member.GradeID, &member.MajorID, &member.CreatedAt, &member.UpdatedAt, &groups); err != nil {
 			log.Fatal(err)
 		}
 
@@ -72,13 +76,24 @@ func get(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 		responseMember.Github = member.Github
 		responseMember.GradeID = member.GradeID
 		responseMember.MajorID = member.MajorID
+		//連結して取得した文字列を分割して配列に格納
+		groupsArray := strings.Split(groups, ",")
+		for _, group := range groupsArray {
+			g, err := strconv.Atoi(group)
+			if err != nil {
+				log.Fatal(err)
+			}
+			responseMember.Group = append(responseMember.Group, g)
+		}
 
+		//response用の配列に構造体を追加
 		response = append(response, responseMember)
 	}
-	if err := rows.Err(); err != nil {
+	if err := memberRows.Err(); err != nil {
 		log.Fatal(err)
 	}
 
+	//response用の配列をjsonに整形
 	responseJSON, err := json.Marshal(&response)
 	if err != nil {
 		log.Fatal(err)
