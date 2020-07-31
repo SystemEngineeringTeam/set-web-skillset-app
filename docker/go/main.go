@@ -51,7 +51,7 @@ type ResponseMember struct {
 
 func get(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	// メンバーのデータと、member_idで紐づいた各種idをそれぞれ「,」で連結した文字列にして取得
-	memberRows, err := db.Query("SELECT a.*, GROUP_CONCAT( b.group_id SEPARATOR ',' ) FROM members a LEFT JOIN groups_of_members b on a.id = b.member_id GROUP BY a.id;")
+	memberRows, err := db.Query("SELECT a.*, GROUP_CONCAT( b.group_id SEPARATOR ',' ), GROUP_CONCAT( c.tech_area_id SEPARATOR ',' ) FROM members a LEFT JOIN groups_of_members b on a.id = b.member_id LEFT JOIN tech_areas_of_members c on a.id = c.member_id GROUP BY a.id;")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -62,7 +62,8 @@ func get(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	for memberRows.Next() {
 		var member Member
 		var groups string
-		if err := memberRows.Scan(&member.ID, &member.Image, &member.Name, &member.Message, &member.Slack, &member.Twitter, &member.Github, &member.GradeID, &member.MajorID, &member.CreatedAt, &member.UpdatedAt, &groups); err != nil {
+		var techAreas string
+		if err := memberRows.Scan(&member.ID, &member.Image, &member.Name, &member.Message, &member.Slack, &member.Twitter, &member.Github, &member.GradeID, &member.MajorID, &member.CreatedAt, &member.UpdatedAt, &groups, &techAreas); err != nil {
 			log.Fatal(err)
 		}
 
@@ -84,6 +85,14 @@ func get(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 				log.Fatal(err)
 			}
 			responseMember.Group = append(responseMember.Group, g)
+		}
+		techAreasArray := strings.Split(techAreas, ",")
+		for _, techArea := range techAreasArray {
+			t, err := strconv.Atoi(techArea)
+			if err != nil {
+				log.Fatal(err)
+			}
+			responseMember.TechnicalArea = append(responseMember.TechnicalArea, t)
 		}
 
 		//response用の配列に構造体を追加
